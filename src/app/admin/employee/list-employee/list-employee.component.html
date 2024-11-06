@@ -1,0 +1,62 @@
+<div class="employee-container">
+  <h2>Employee List</h2>
+
+  <div *ngIf="!showDetails" class="employee-actions">
+    <div class="search-group">
+      <input type="number" placeholder="Search by Employee ID" class="search-input">
+      <button><i class="fas fa-search"></i> Search</button>
+    </div>
+    <button (click)="goToAddEmployee()"><i class="fas fa-plus-circle"></i> Add Employee</button>
+  </div>
+
+  <!-- Employee Table -->
+  <table *ngIf="!showDetails" class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Profile Picture</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.employeeId }}</td>
+        <td>
+          <img [src]="'data:image/jpg;base64,' + employee.employeeImage" class="profile-pic" alt="Profile Picture">
+        </td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.email }}</td>
+        <td>
+          <button (click)="showMore(employee)"><i class="fas fa-info-circle"></i>Show More</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Employee Details Card -->
+  <div *ngIf="showDetails" class="employee-card">
+    <button class="back-button" (click)="showDetails = false">Back to List</button>
+    <h3>Employee Details</h3>
+    <img [src]="'data:image/jpg;base64,' + selectedEmployee.employeeImage" class="profile-pic-large" alt="Profile Picture">
+    <div class="employee-details">
+      <p><strong>ID:</strong> {{ selectedEmployee.employeeId }}</p>
+      <p><strong>Name:</strong> {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</p>
+      <p><strong>Email:</strong> {{ selectedEmployee.email }}</p>
+      <p><strong>Phone:</strong> {{ selectedEmployee.phone }}</p>
+      <p><strong>Present Address:</strong> {{ selectedEmployee.presentAddress }}</p>
+      <p><strong>Permanent Address:</strong> {{ selectedEmployee.permanentAddress }}</p>
+      <p><strong>Date of Birth:</strong> {{ selectedEmployee.dateOfBirth | date:'yyyy-MM-dd' }}</p>
+      <p><strong>Hire Date:</strong> {{ selectedEmployee.hireDate | date:'yyyy-MM-dd' }}</p>
+      <p><strong>Current Salary:</strong> {{ selectedEmployee.currentSalary | currency }}</p>
+      <p><strong>Status:</strong> {{ selectedEmployee.isActive ? 'Active' : 'Inactive' }}</p>
+    </div>
+     <!-- Update Button -->
+     <button class="update-button" (click)="goToUpdateEmployee(selectedEmployee.employeeId)">
+      <i class="fas fa-edit"></i> Update
+    </button>
+  </div>
+</div>
