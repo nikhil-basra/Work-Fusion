@@ -8,6 +8,8 @@ import { AdminService } from '../../services/admin.service';
 })
 export class UserRequestsComponent implements OnInit {
   users: any[] = [];
+  allUsers: any[] = []; // Store all users to reset filters
+  searchUserId: number | null = null;
 
   constructor(private adminService: AdminService) {}
 
@@ -20,11 +22,24 @@ export class UserRequestsComponent implements OnInit {
     this.adminService.getAllUsers().subscribe({
       next: (data) => {
         this.users = data;
+        this.allUsers = data; // Save initial data
       },
       error: (error) => {
         console.error('Error fetching users:', error);
       }
     });
+  }
+
+  // Search user by ID
+  searchByUserId(): void {
+    if (this.searchUserId) {
+      this.users = this.allUsers.filter(user => user.userId === this.searchUserId);
+    }
+  }
+
+  // Filter users by active status
+  filterUsers(isActive: boolean): void {
+    this.users = this.allUsers.filter(user => user.isActive === isActive);
   }
 
   // Toggle user status
@@ -41,5 +56,4 @@ export class UserRequestsComponent implements OnInit {
       }
     });
   }
-  
 }

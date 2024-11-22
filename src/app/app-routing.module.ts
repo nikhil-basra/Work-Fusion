@@ -36,6 +36,15 @@ import { AddClientComponent } from './admin/client/add-client/add-client.compone
 import { UpdateClientComponent } from './admin/client/update-client/update-client.component';
 import { UserRequestsComponent } from './admin/user-requests/user-requests.component';
 import { ListClientComponent } from './admin/client/list-client/list-client.component';
+import { ListDepartmentComponent } from './admin/department/list-department/list-department.component';
+import { AddDepartmentComponent } from './admin/department/add-department/add-department.component';
+import { UpdateDepartmentComponent } from './admin/department/update-department/update-department.component';
+import { ClientLayoutComponent } from './layout/client-layout/client-layout.component';
+import { ClientHomeComponent } from './client/client-home/client-home.component';
+import { RequestProjectsComponent } from './client/projects/request-projects/request-projects.component';
+import { RequestNewProjectsComponent } from './client/projects/request-new-projects/request-new-projects.component';
+import { ListProjectsComponent } from './client/projects/list-projects/list-projects.component';
+import { UpdateRequestedProjectsComponent } from './client/projects/update-requested-projects/update-requested-projects.component';
 
 const routes: Routes = [
   // ****************************Outer Page**************************
@@ -90,17 +99,38 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'manager/list-manager', component: ListManagerComponent },
       { path: 'manager/add-manager', component: AddManagerComponent },
-      { path: 'manager/update-manager', component: UpdateManagerComponent },
+      { path: 'manager/update-manager/:id', component: UpdateManagerComponent },
       { path: 'employee/list-employee', component: ListEmployeeComponent },
       { path: 'employee/add-employee', component: AddEmployeeComponent },
-      { path: 'employee/update-employee', component: UpdateEmployeeComponent},
+      { path: 'employee/update-employee/:id', component: UpdateEmployeeComponent},
       { path: 'client/list-client', component: ListClientComponent },
       { path: 'client/add-client', component: AddClientComponent },
-      { path: 'client/update-client', component: UpdateClientComponent},
+      { path: 'client/update-client/:id', component: UpdateClientComponent},
+      { path: 'department/list-department', component: ListDepartmentComponent},
+      { path: 'department/add-department', component: AddDepartmentComponent},
+      { path: 'department/update-department', component: UpdateDepartmentComponent},
       { path: 'user-requests', component: UserRequestsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' } 
     ]
   },
+
+
+  //********************************client***************** */
+  {
+    path: 'client',
+    component: ClientLayoutComponent,
+    children: [
+      { path: 'home', component: ClientHomeComponent },
+      { path: 'request-projects', component: RequestProjectsComponent },
+      { path: 'request-new-projects', component: RequestNewProjectsComponent },
+      { path: 'list-projects', component: ListProjectsComponent },
+      { path: 'update-requested-projects/:id', component: UpdateRequestedProjectsComponent },
+      
+     
+      { path: '', redirectTo: 'home', pathMatch: 'full' } 
+    ]
+  },
+  
 ];
 
 @NgModule({

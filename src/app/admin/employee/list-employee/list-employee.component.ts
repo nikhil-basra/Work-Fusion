@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-employee',
@@ -8,40 +8,73 @@ import { Router } from '@angular/router'; // Import Router
   styleUrls: ['./list-employee.component.css']
 })
 export class ListEmployeeComponent implements OnInit {
-  employees: any[] = [];  // Initialize employees array
-  showDetails = false;     // Control the display of employee details
-  selectedEmployee: any;   // Store the currently selected employee
+  employees: any[] = [];
+  filteredEmployees: any[] = [];
+  departments: any[] = [];
+  showDetails = false;
+  selectedEmployee: any;
+  searchText: string = '';
 
-  constructor(private adminService: AdminService, private router: Router) {} // Inject Router
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
-    this.fetchEmployees();   // Fetch employees on component initialization
+    this.fetchEmployees();
+    this.fetchDepartments();
   }
 
-  // Fetch employees from the API
   fetchEmployees() {
     this.adminService.getAllEmployees().subscribe(
       (data) => {
-        this.employees = data; // Assign fetched data to the employees array
+        this.employees = data;
+        this.filteredEmployees = data;
       },
       (error) => {
-        console.error('Error fetching employees', error); // Handle error
+        console.error('Error fetching employees', error);
       }
     );
   }
 
-  // Show details of the selected employee
-  showMore(employee: any) {
-    this.selectedEmployee = employee;
-    this.showDetails = true; // Display the details view
+  fetchDepartments() {
+    this.adminService.getDepartments().subscribe(
+      (data) => {
+        this.departments = data;
+      },
+      (error) => {
+        console.error('Error fetching departments', error);
+      }
+    );
   }
 
-  // Navigate to the Add Employee component
-  goToAddEmployee(): void {
-    this.router.navigate(['admin/employee/add-employee']); // Programmatic navigation
+  getDepartmentName(departmentId: number): string {
+    const department = this.departments.find(dept => dept.departmentId === departmentId);
+    return department ? department.departmentName : 'Unknown';
+  }
+
+  showMore(employee: any) {
+    this.selectedEmployee = employee;
+    this.showDetails = true;
   }
 
   goToUpdateEmployee(employeeId: number) {
     this.router.navigate(['admin/employee/update-employee', employeeId]);
+  }
+
+  // Updated search function
+  searchEmployee() {
+    if (this.searchText) {
+      const searchLower = this.searchText.toLowerCase();
+      this.filteredEmployees = this.employees.filter(employee => {
+        const fullName = `${employee.firstName} ${employee.lastName}`.toLowerCase();
+        const departmentName = this.getDepartmentName(employee.departmentId).toLowerCase();
+        return fullName.includes(searchLower) || departmentName.includes(searchLower);
+      });
+    } else {
+      this.filteredEmployees = this.employees;
+    }
+  }
+
+  resetSearch() {
+    this.searchText = '';
+    this.filteredEmployees = this.employees;
   }
 }

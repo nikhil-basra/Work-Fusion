@@ -1,19 +1,19 @@
-/* Main container for the employee list */
+/* Main container */
 .employee-container {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
+  position: relative;
 }
 
 /* Heading style */
 h2 {
   text-align: center;
-  margin-bottom: 20px;
   font-size: 24px;
   color: #333;
 }
 
-/* Actions container for search and add button */
+/* Actions container */
 .employee-actions {
   display: flex;
   justify-content: space-between;
@@ -21,14 +21,12 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Grouping search input and search button */
 .search-group {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between search bar and search button */
+  gap: 10px;
 }
 
-/* Search input style */
 .search-input {
   width: 200px;
   padding: 10px;
@@ -37,11 +35,10 @@ h2 {
   font-size: 14px;
 }
 
-/* Employee table style */
+/* Employee table styling */
 .employee-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -59,12 +56,10 @@ h2 {
   color: white;
 }
 
-/* Row hover effect */
 .employee-table tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Profile picture style */
 .profile-pic {
   width: 50px;
   height: 50px;
@@ -72,7 +67,6 @@ h2 {
   object-fit: cover;
 }
 
-/* Button style */
 button {
   background-color: #007bff;
   color: white;
@@ -83,62 +77,88 @@ button {
   transition: background-color 0.3s;
 }
 
-/* Button hover effect */
 button:hover {
   background-color: #0056b3;
 }
 
-/* Employee details card style */
+/* Employee details card */
 .employee-card {
-  width: 400px;
   margin: 20px auto;
-  border: 1px solid #ddd;
   padding: 20px;
   border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative; /* Ensures .update-button can position itself relative to this container */
+  display: flex;
+  flex-direction: column;
+  width: 60%;
 }
 
-/* Back button style */
+.employee-card-content {
+  display: flex;
+  gap: 20px;
+}
+
+/* Left section */
+.left-section {
+  flex: 1;
+  text-align: center;
+}
+
+.profile-pic-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.left-section p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #333;
+  margin-left: 30px;
+}
+
+.left-section i {
+  color: #007bff;
+  margin-right: 5px;
+}
+
+/* Right section */
+.right-section {
+  flex: 2;
+}
+
+.right-section p {
+  margin: 8px 0;
+  margin-left: 50px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Back button */
 .back-button {
   background-color: #dc3545;
+  color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  color: white;
   cursor: pointer;
   transition: background-color 0.3s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .back-button:hover {
   background-color: #c82333;
 }
 
-/* Employee details text */
-.employee-details {
-  margin-top: 15px;
-}
-
-.employee-details p {
-  margin: 8px 0;
-  font-size: 16px;
-  color: #555;
-}
-
-/* Large profile picture style in details */
-.profile-pic-large {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Update button style */
+/* Update button */
 .update-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
@@ -147,15 +167,33 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  position: absolute;
-  bottom: 20px; /* Positions the button 20px from the bottom of .employee-card */
-  right: 20px;  /* Positions the button 20px from the right of .employee-card */
 }
 
 .update-button:hover {
   background-color: #0056b3;
 }
 
-.update-button i {
-  font-size: 18px;
+/* Back button */
+.back-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between icon and text */
+}
+
+.back-button i {
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #c82333;
 }

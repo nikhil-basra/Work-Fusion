@@ -31,7 +31,6 @@ import { EmployeeLayoutComponent } from './layout/employee-layout/employee-layou
 import { EmployeeHeaderComponent } from './layout/employee-layout/employee-header/employee-header.component';
 import { ClientLayoutComponent } from './layout/client-layout/client-layout.component';
 import { ClientHeaderComponent } from './layout/client-layout/client-header/client-header.component';
-import { ClientHeaderBarComponent } from './layout/client-layout/client-header-bar/client-header-bar.component';
 import { ClientFooterComponent } from './layout/client-layout/client-footer/client-footer.component';
 import { ManagerLayoutComponent } from './layout/manager-layout/manager-layout.component';
 import { ManagerHeaderComponent } from './layout/manager-layout/manager-header/manager-header.component';
@@ -45,8 +44,8 @@ import { EmployeeLoginComponent } from './outer/employee-login/employee-login.co
 import { ClientLoginComponent } from './outer/client-login/client-login.component';
 import { ManagerLoginComponent } from './outer/manager-login/manager-login.component';
 import { UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './services/authentication.service';
 import { EmployeeSideBarComponent } from './layout/employee-layout/employee-side-bar/employee-side-bar.component';
@@ -64,6 +63,17 @@ import { ManagerSideBarComponent } from './layout/manager-layout/manager-side-ba
 import { EmployeeService } from './services/employee.service';
 import { AdminService } from './services/admin.service';
 import { UserRequestsComponent } from './admin/user-requests/user-requests.component';
+import { ListDepartmentComponent } from './admin/department/list-department/list-department.component';
+import { UpdateDepartmentComponent } from './admin/department/update-department/update-department.component';
+import { AddDepartmentComponent } from './admin/department/add-department/add-department.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ClientSideBarComponent } from './layout/client-layout/client-side-bar/client-side-bar.component';
+import { authInterceptor } from './interceptor/auth.interceptor';
+import { RequestProjectsComponent } from './client/projects/request-projects/request-projects.component';
+import { RequestNewProjectsComponent } from './client/projects/request-new-projects/request-new-projects.component';
+import { ClientHomeComponent } from './client/client-home/client-home.component';
+import { UpdateRequestedProjectsComponent } from './client/projects/update-requested-projects/update-requested-projects.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +105,6 @@ import { UserRequestsComponent } from './admin/user-requests/user-requests.compo
     EmployeeLayoutComponent,
     ClientLayoutComponent,
     ClientHeaderComponent,
-    ClientHeaderBarComponent,
     ClientFooterComponent,
     ManagerLayoutComponent,
     ManagerHeaderComponent,
@@ -121,7 +130,16 @@ import { UserRequestsComponent } from './admin/user-requests/user-requests.compo
     EmployeeHeaderComponent,
     EmployeeFooterComponent,
     ManagerSideBarComponent,
-    UserRequestsComponent
+    UserRequestsComponent,
+    ListDepartmentComponent,
+    UpdateDepartmentComponent,
+    AddDepartmentComponent,
+    ClientSideBarComponent,
+    RequestProjectsComponent,
+    RequestNewProjectsComponent,
+    ClientHomeComponent,
+    UpdateRequestedProjectsComponent
+
    
   ],
   imports: [
@@ -130,13 +148,26 @@ import { UserRequestsComponent } from './admin/user-requests/user-requests.compo
     ReactiveFormsModule,
     FormsModule,          // Add FormsModule here
     HttpClientModule ,
+    MatSnackBarModule,
     BrowserAnimationsModule, // Include this module for animations
     ToastrModule.forRoot({
       positionClass: 'toast-top-right', // Position of the toast messages
       preventDuplicates: true, // Prevent duplicate toasts
-    })
+    }),
+    NgxSpinnerModule.forRoot(),
   ],
-  providers: [UserService,AuthenticationService,EmployeeService,AdminService],
+  providers: [UserService,
+    AuthenticationService,
+    EmployeeService,
+    AdminService,
+    provideToastr(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptor,
+      multi: true
+    },
+    provideHttpClient(withFetch())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
