@@ -74,6 +74,17 @@ import { RequestProjectsComponent } from './client/projects/request-projects/req
 import { RequestNewProjectsComponent } from './client/projects/request-new-projects/request-new-projects.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 import { UpdateRequestedProjectsComponent } from './client/projects/update-requested-projects/update-requested-projects.component';
+import { ChatComponent } from './client/chat/chat/chat.component';
+import { JoinRoomComponent } from './client/chat/join-room/join-room.component';
+import { WelcomeComponent } from './client/chat/welcome/welcome.component';
+import { ManagerHomeComponent } from './manager/manager-home/manager-home.component';
+import { ManagerChatComponent } from './manager/chat/manager-chat/manager-chat.component';
+import { ManagerJoinRoomComponent } from './manager/chat/manager-join-room/manager-join-room.component';
+import { ManagerWelocomeComponent } from './manager/chat/manager-welocome/manager-welocome.component';
+import { ClientProfileComponent } from './client/profile/client-profile/client-profile.component';
+import { ClientProfileUpdateComponent } from './client/profile/client-profile-update/client-profile-update.component';
+import { ClientSettingsComponent } from './client/settings/client-settings/client-settings.component';
+import { ClientResetPasswordComponent } from './client/settings/client-reset-password/client-reset-password.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +149,18 @@ import { UpdateRequestedProjectsComponent } from './client/projects/update-reque
     RequestProjectsComponent,
     RequestNewProjectsComponent,
     ClientHomeComponent,
-    UpdateRequestedProjectsComponent
+    UpdateRequestedProjectsComponent,
+    ChatComponent,
+    JoinRoomComponent,
+    WelcomeComponent,
+    ManagerHomeComponent,
+    ManagerChatComponent,
+    ManagerJoinRoomComponent,
+    ManagerWelocomeComponent,
+    ClientProfileComponent,
+    ClientProfileUpdateComponent,
+    ClientSettingsComponent,
+    ClientResetPasswordComponent,
 
    
   ],

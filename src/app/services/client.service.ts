@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ClientsProjectRequestsModel } from '../models/clientProjectRequests.model';
+import { ClientModel } from '../models/client.model';
 
 
 @Injectable({
@@ -54,4 +55,47 @@ export class ClientService {
       headers: this.getAuthHeaders()
     });
   }
+
+
+ // Fetch all departments
+ getDepartments(): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/departments`, { headers: this.getAuthHeaders() });
+}
+
+ // Fetch image by userId and roleId
+ getImageByUserIdAndRoleId(userId: number, roleId: number): Observable<any> {
+  return this.http.get<any>(
+    `${this.apiUrl}/clientImage/${userId}/${roleId}`,
+    { headers: this.getAuthHeaders() }
+  );
+}
+
+//------------------------------client-------------------------------//
+getClientById(clientId: number): Observable<ClientModel> {
+  return this.http.get<ClientModel>(`${this.apiUrl}/clients/${clientId}`, { headers: this.getAuthHeaders() });
+}
+
+updateClient(client: ClientModel): Observable<any> {
+  return this.http.put(`${this.apiUrl}/updateClient`, client, { headers: this.getAuthHeaders() });
+}
+
+
+ //------------------------------ Reset Password ------------------------------//
+ resetPassword(userId: number, username: string, currentPassword: string, newPassword: string): Observable<any> {
+  const headers = this.getAuthHeaders();
+  const params = new HttpParams()
+    .set('userId', userId.toString())
+    .set('username', username)
+    .set('currentPassword', currentPassword)
+    .set('newPassword', newPassword);
+
+  // Specify responseType: 'text' to handle plain text responses
+  return this.http.post(`${this.apiUrl}/reset-password`, null, {
+    headers,
+    params,
+    responseType: 'text' as 'json' // Casting the type to avoid type issues
+  });
+}
+
+
 }

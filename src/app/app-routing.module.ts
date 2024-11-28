@@ -45,6 +45,18 @@ import { RequestProjectsComponent } from './client/projects/request-projects/req
 import { RequestNewProjectsComponent } from './client/projects/request-new-projects/request-new-projects.component';
 import { ListProjectsComponent } from './client/projects/list-projects/list-projects.component';
 import { UpdateRequestedProjectsComponent } from './client/projects/update-requested-projects/update-requested-projects.component';
+import { JoinRoomComponent } from './client/chat/join-room/join-room.component';
+import { ChatComponent } from './client/chat/chat/chat.component';
+import { WelcomeComponent } from './client/chat/welcome/welcome.component';
+import { ManagerHomeComponent } from './manager/manager-home/manager-home.component';
+import { ManagerJoinRoomComponent } from './manager/chat/manager-join-room/manager-join-room.component';
+import { ManagerChatComponent } from './manager/chat/manager-chat/manager-chat.component';
+import { ManagerWelocomeComponent } from './manager/chat/manager-welocome/manager-welocome.component';
+import { ClientProfileComponent } from './client/profile/client-profile/client-profile.component';
+import { ClientProfileUpdateComponent } from './client/profile/client-profile-update/client-profile-update.component';
+import { ClientSettingsComponent } from './client/settings/client-settings/client-settings.component';
+import { ClientResetPasswordComponent } from './client/settings/client-reset-password/client-reset-password.component';
+
 
 const routes: Routes = [
   // ****************************Outer Page**************************
@@ -83,11 +95,16 @@ const routes: Routes = [
   },
 
   //***************************manager*************************************** 
+
   {
     path: 'manager',
     component: ManagerLayoutComponent,
     children: [
-     
+      { path: 'managerhome', component: ManagerHomeComponent },
+      { path: 'manager-join-room', component : ManagerJoinRoomComponent},   
+      {path : 'manager-chat', component:ManagerChatComponent},
+      {path : 'manager-welcome', component:ManagerWelocomeComponent},
+      { path: '', redirectTo: 'managerhome', pathMatch: 'full' } 
     ]
   },
 
@@ -125,7 +142,13 @@ const routes: Routes = [
       { path: 'request-new-projects', component: RequestNewProjectsComponent },
       { path: 'list-projects', component: ListProjectsComponent },
       { path: 'update-requested-projects/:id', component: UpdateRequestedProjectsComponent },
-      
+      { path: 'join-room', component : JoinRoomComponent},   
+      {path : 'chat', component:ChatComponent},
+      {path : 'welcome', component:WelcomeComponent},
+      {path : 'client-profile', component:ClientProfileComponent},    
+      {path : 'client-profile-update/:id', component:ClientProfileUpdateComponent},
+      {path : 'client-settings', component:ClientSettingsComponent},    
+      {path : 'client-reset-password', component:ClientResetPasswordComponent},
      
       { path: '', redirectTo: 'home', pathMatch: 'full' } 
     ]

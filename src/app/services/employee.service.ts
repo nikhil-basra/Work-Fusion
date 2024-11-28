@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeModel } from '../models/employee.model';
 
@@ -11,6 +11,14 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('authToken');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+  }
+
   getEmployeeByUserId(userId: number): Observable<EmployeeModel> {
     return this.http.get<EmployeeModel>(`${this.apiUrl}/${userId}`);
   }
@@ -18,4 +26,13 @@ export class EmployeeService {
   updateEmployee(employee: EmployeeModel): Observable<void> {
     return this.http.put<void>(this.apiUrl, employee);
   }
+
+    // Fetch image by userId and roleId
+    getImageByUserIdAndRoleId(userId: number, roleId: number): Observable<any> {
+      return this.http.get<any>(
+        `${this.apiUrl}/employeeImage/${userId}/${roleId}`,
+        { headers: this.getAuthHeaders() }
+      );
+    }
+  
 }

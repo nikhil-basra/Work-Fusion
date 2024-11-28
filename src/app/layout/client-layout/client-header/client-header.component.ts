@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 export class ClientHeaderComponent {
   constructor(private router: Router) {}
   logout(): void {
-    localStorage.removeItem('authToken'); // Clear the auth token from local storage
+       // Clear all items from local storage
+       localStorage.clear();
     this.router.navigate(['/outer-home']); // Redirect to the login page
+  }
+  openProfile(){
+    this.router.navigate(['client/client-profile']);
   }
 }

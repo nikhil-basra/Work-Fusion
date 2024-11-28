@@ -1,11 +1,10 @@
 <nav class="employee-sidebar">
   <div class="profile-container">
     <div class="profile-pic">
-      <img src="assets/employee1.jpg" alt="Profile Picture" />
+      <img [src]="employeeImage" alt="Profile Picture" />
     </div>
     <div class="employee-info">
-      <span class="employee-name">{{ employeeName }}</span>
-<!-- Employee name -->
+      <span class="employee-name">{{ employeeName }}</span> <!-- Display employee name -->
     </div>
   </div>
   <a routerLink="employeehome" routerLinkActive="active">

@@ -9,6 +9,7 @@
     flex-direction: column; /* Stack items vertically */
     flex: 1; /* Take up the remaining space */
     padding-top: 60px;
+    margin-bottom: 50px;
   }
   
   .content-wrapper {

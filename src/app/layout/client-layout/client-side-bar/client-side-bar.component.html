@@ -1,9 +1,13 @@
 <aside class="client-sidebar">
   <div class="admin-profile">
     <div class="admin-image-frame">
-      <img src="assets/employee1.jpg" alt="Admin" class="admin-image" />
+      <img
+        [src]="userImage || 'assets/employee1.jpg'"
+        alt="User Image"
+        class="admin-image"
+      />
     </div>
-    <h3 class="admin-name">Gurinder Kaur</h3>
+    <h3 class="admin-name">{{ fullName }}</h3>
   </div>
   <ul>
     <li>
@@ -40,12 +44,12 @@
       </a>
     </li>
     <li>
-      <a routerLink="/client/chat">
+      <a routerLink="/client/welcome">
         <i class="fa-solid fa-comments"></i> Chat
       </a>
     </li>
     <li>
-      <a routerLink="/client/settings">
+      <a routerLink="/client/client-settings">
         <i class="fa-solid fa-cog"></i> Settings
       </a>
     </li>

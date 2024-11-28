@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../../services/client.service';
 import { ClientsProjectRequestsModel } from '../../../models/clientProjectRequests.model';
 import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-new-projects',
@@ -15,7 +16,7 @@ export class RequestNewProjectsComponent implements OnInit {
   uploadedFiles: { fileName: string; fileType: string; fileBase64: string }[] = [];
   maxFileSize = 5 * 1024 * 1024; // 5MB
 
-  constructor(private fb: FormBuilder, private clientService: ClientService) {
+  constructor(private fb: FormBuilder, private clientService: ClientService, private router: Router) {
     this.projectForm = this.fb.group({
       projectTitle: ['', Validators.required],
       projectDescription: ['', Validators.required],
@@ -35,7 +36,9 @@ export class RequestNewProjectsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   /**
    * Handles file uploads, validates size and type, and converts files to Base64.
@@ -106,4 +109,9 @@ export class RequestNewProjectsComponent implements OnInit {
     }
     return 0;
   }
+
+  onCancel(): void {
+    this.router.navigate(['/client/request-projects']);
+  }
+  
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-employee-login',
@@ -35,9 +36,15 @@ export class EmployeeLoginComponent {
       this.authService.login(roleId, username, password).subscribe({
         next: (response) => {
           const token = response.token;
+          const decodedToken: any = jwt_decode(token);
 
           // Store the token in localStorage
           localStorage.setItem('authToken', token);
+          localStorage.setItem('UserId', decodedToken.UserId);
+          localStorage.setItem('UserName', decodedToken.unique_name);
+          localStorage.setItem('Role', decodedToken.role);
+          localStorage.setItem('EntityId', decodedToken.EntityId);
+          localStorage.setItem('FullName', decodedToken.FullName);
 
           // Navigate to employee dashboard
           this.router.navigate(['/employee']); // Adjust path if needed

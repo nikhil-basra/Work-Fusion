@@ -116,6 +116,10 @@ export class UpdateClientComponent implements OnInit{
     );
   }
 
+  goBack(): void {
+    this.router.navigate(['admin/client/list-client']);
+  }
+
   convertImageToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -127,11 +131,7 @@ export class UpdateClientComponent implements OnInit{
       reader.onerror = error => {
         reject(error);
       };
-    });
+    });   
   }
-  
 
-  goBack(): void {
-    this.router.navigate(['admin/client/list-client']);
-  }
 }
