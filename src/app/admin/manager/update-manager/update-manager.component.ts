@@ -15,7 +15,8 @@ export class UpdateManagerComponent implements OnInit {
   updateManagerForm: FormGroup;
   managerId: number | undefined;
   selectedImage: File | null = null;
-  
+  departments: any[] = [];  // To store department data
+
   constructor(
     private fb: FormBuilder,
     private adminService: AdminService,
@@ -34,11 +35,13 @@ export class UpdateManagerComponent implements OnInit {
       presentAddress: ['', Validators.required],
       permanentAddress: ['', Validators.required],
       departmentId: ['', Validators.required],
-      currentSalary: ['', Validators.required],
+      salary: ['', Validators.required],
       isActive: [{ value: '', disabled: true }], // Make sure this is provided correctly in the backend
       gender: ['', Validators.required],
       idType: ['', Validators.required],
-      idNumber: ['', Validators.required]
+      idNumber: ['', Validators.required],
+      hireDate: ['', Validators.required], // Add this field here 
+      dateOfBirth :  ['', Validators.required],  
     });
   }
 
@@ -61,12 +64,14 @@ export class UpdateManagerComponent implements OnInit {
             presentAddress: manager.presentAddress,
             permanentAddress: manager.permanentAddress,
             departmentId: manager.departmentId,
-            currentSalary: manager.salary,
+            salary: manager.salary,
             isActive: manager.isActive ? 'Active' : 'Inactive', // Adjust based on backend expected type
+            hireDate: manager.hireDate,
             gender: manager.gender,
             idType: manager.idType,
             idNumber: manager.idNumber,
             managerImage: manager.managerImage,
+            dateOfBirth:manager.dateOfBirth,
           });
         },
         error => {
@@ -76,6 +81,20 @@ export class UpdateManagerComponent implements OnInit {
       );
     }
   }
+
+    // Fetch departments when department field is focused
+    onDepartmentFocus() {
+      this.adminService.getDepartments().subscribe(
+        (response: any[]) => {
+          this.departments = response;
+          console.log('Departments fetched:', this.departments);
+        },
+        error => {
+          console.error('Error fetching departments:', error);
+        }
+      );
+    }
+    
 
   onSubmit(): void {
     if (this.updateManagerForm.valid) {

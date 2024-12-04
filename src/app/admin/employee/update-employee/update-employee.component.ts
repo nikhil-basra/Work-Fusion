@@ -14,6 +14,7 @@ export class UpdateEmployeeComponent implements OnInit {
   updateEmployeeForm: FormGroup;
   employeeId: number | undefined;
   selectedImage: File | null = null;
+  departments: any[] = [];  // To store department data
 
   constructor(
     private fb: FormBuilder,
@@ -124,6 +125,18 @@ export class UpdateEmployeeComponent implements OnInit {
     }
   }
 
+  
+  // Fetch departments when department field is focused
+  onDepartmentFocus() {
+    this.adminService.getDepartments().subscribe(
+      (response: any) => {
+        this.departments = response;
+      },
+      error => {
+        console.error('Error fetching departments:', error);
+      }
+    );
+  }
   convertImageToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -136,6 +149,8 @@ export class UpdateEmployeeComponent implements OnInit {
       };
     });
   }
+
+  
 
   goBack(): void {
     this.router.navigate(['admin/employee/list-employee']);

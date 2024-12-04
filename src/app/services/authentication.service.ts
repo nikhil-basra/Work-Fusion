@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserLoginModel } from '../models/user-login.model'; // Make sure this model is created
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private apiUrl = 'https://localhost:7036/api/UserLogin/authenticate'; // Your API URL
+  private apiUrl = 'https://localhost:7036/api/UserLogin/authenticate';
 
   constructor(private http: HttpClient) {}
 
-  login(roleId: number, username: string, password: string): Observable<any> {
-    const loginData: UserLoginModel = {
+  login(roleId: number, usernameOrEmail: string, password: string): Observable<any> {
+    const loginData = {
       RoleId: roleId,
-      Username: username,
+      UsernameOrEmail: usernameOrEmail, // Changed field name
       Password: password
     };
 

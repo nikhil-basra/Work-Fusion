@@ -50,8 +50,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './services/authentication.service';
 import { EmployeeSideBarComponent } from './layout/employee-layout/employee-side-bar/employee-side-bar.component';
 import { EmployeehomeComponent } from './employee/employeehome/employeehome.component';
-import { EmployeechatComponent } from './employee/employeechat/employeechat.component';
-import { EmployeeprofileComponent } from './employee/employeeprofile/employeeprofile.component';
 import { EmployeeattendanceComponent } from './employee/employeeattendance/employeeattendance.component';
 import { EmployeeprojectsComponent } from './employee/employeeprojects/employeeprojects.component';
 import { EmployeetasksComponent } from './employee/employeetasks/employeetasks.component';
@@ -85,6 +83,18 @@ import { ClientProfileComponent } from './client/profile/client-profile/client-p
 import { ClientProfileUpdateComponent } from './client/profile/client-profile-update/client-profile-update.component';
 import { ClientSettingsComponent } from './client/settings/client-settings/client-settings.component';
 import { ClientResetPasswordComponent } from './client/settings/client-reset-password/client-reset-password.component';
+import { EmployeeProfileUpdateComponent } from './employee/profile/employee-profile-update/employee-profile-update.component';
+import { EmployeeprofileComponent } from './employee/profile/employeeprofile/employeeprofile.component';
+import { EmployeeSettingsComponent } from './employee/settings/employee-settings/employee-settings.component';
+import { EmployeeResetPasswordComponent } from './employee/settings/employee-reset-password/employee-reset-password.component';
+import { ManagerSettingsComponent } from './manager/settings/manager-settings/manager-settings.component';
+import { ManagerResetPasswordComponent } from './manager/settings/manager-reset-password/manager-reset-password.component';
+import { ManagerProfileComponent } from './manager/profile/manager-profile/manager-profile.component';
+import { ManagerProfileUpdateComponent } from './manager/profile/manager-profile-update/manager-profile-update.component';
+import { EmployeeChatComponent } from './employee/chat/employee-chat/employee-chat.component';
+import { EmployeeWelcomeComponent } from './employee/chat/employee-welcome/employee-welcome.component';
+import { EmployeeJoinRoomComponent } from './employee/chat/employee-join-room/employee-join-room.component';
+import { ForgotPasswordComponent } from './outer/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +140,6 @@ import { ClientResetPasswordComponent } from './client/settings/client-reset-pas
     ManagerLoginComponent,
     EmployeeSideBarComponent,
     EmployeehomeComponent,
-    EmployeechatComponent,
     EmployeeprofileComponent,
     EmployeeattendanceComponent,
     EmployeeprojectsComponent,
@@ -161,6 +170,17 @@ import { ClientResetPasswordComponent } from './client/settings/client-reset-pas
     ClientProfileUpdateComponent,
     ClientSettingsComponent,
     ClientResetPasswordComponent,
+    EmployeeProfileUpdateComponent,
+    EmployeeSettingsComponent,
+    EmployeeResetPasswordComponent,
+    ManagerSettingsComponent,
+    ManagerResetPasswordComponent,
+    ManagerProfileComponent,
+    ManagerProfileUpdateComponent,
+    EmployeeChatComponent,
+    EmployeeWelcomeComponent,
+    EmployeeJoinRoomComponent,
+    ForgotPasswordComponent,
 
    
   ],

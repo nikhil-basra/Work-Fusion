@@ -3,10 +3,10 @@
       <h2>Employee Login</h2>
       <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="username">Username</label>
-          <input id="username" type="text" formControlName="username" placeholder="Enter your username" />
-          <div *ngIf="employeeForm.get('username')?.invalid && employeeForm.get('username')?.touched" class="error">
-            Username is required.
+          <label for="usernameOrEmail">Username or Email</label>
+          <input id="usernameOrEmail" type="text" formControlName="usernameOrEmail" placeholder="Enter your username or Email" />
+          <div *ngIf="employeeForm.get('usernameOrEmail')?.invalid && employeeForm.get('usernameOrEmail')?.touched" class="error">
+            Username or Email is required.
           </div>
         </div>
   
@@ -22,7 +22,7 @@
         <button type="submit">Login</button>
   
         <div class="forgot-password">
-          <a href="#">Forgot Password?</a>
+          <a href="/forgot-password">Forgot Password?</a>
         </div>
       </form>
     </div>

@@ -12,6 +12,7 @@ body {
     margin-top: 10px;
     margin-left: 150px;
     max-width: 800px; /* Limit max width for profile card */
+    width: 1000px;
 }
 
 /* Profile Header */

@@ -19,7 +19,7 @@ export class AdminLoginComponent {
     private router: Router // Inject Router for navigation
   ) {
     this.adminForm = this.fb.group({
-      username: ['', Validators.required],
+      usernameOrEmail: ['', Validators.required],
       password: ['', Validators.required],
       rememberMe: [false] // Optional remember me functionality
     });
@@ -30,9 +30,9 @@ export class AdminLoginComponent {
 
     if (this.adminForm.valid) {
       const roleId = 1; // Assuming roleId for Admin is 1
-      const { username, password } = this.adminForm.value;
+      const { usernameOrEmail, password } = this.adminForm.value;
 
-      this.authService.login(roleId, username, password).subscribe({
+      this.authService.login(roleId, usernameOrEmail, password).subscribe({
         next: (response) => {
           const token = response.token; // Assuming response contains a token
 

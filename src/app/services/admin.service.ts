@@ -116,8 +116,6 @@ deleteManager(managerId: number): Observable<any> {
   return this.http.delete(`${this.apiUrl}/managers/${managerId}`, { headers: this.getAuthHeaders() });
 }
 
- //***********************************************************Client********************
-
  // ********************************Client Methods************************************
 
  getAllClients(): Observable<ClientModel[]> {
@@ -140,4 +138,5 @@ updateClient(client: ClientModel): Observable<any> {
 deleteClient(clientId: number): Observable<any> {
   return this.http.delete(`${this.apiUrl}/clients/${clientId}`, { headers: this.getAuthHeaders() });
 }
+
 }

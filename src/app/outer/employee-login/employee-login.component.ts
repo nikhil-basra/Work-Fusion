@@ -20,7 +20,7 @@ export class EmployeeLoginComponent {
     private router: Router
   ) {
     this.employeeForm = this.fb.group({
-      username: ['', Validators.required],
+      usernameOrEmail: ['', Validators.required],
       password: ['', Validators.required],
       rememberMe: [false],
     });
@@ -31,9 +31,9 @@ export class EmployeeLoginComponent {
 
     if (this.employeeForm.valid) {
       const roleId = 3; // RoleId for Employee
-      const { username, password } = this.employeeForm.value;
+      const { usernameOrEmail, password } = this.employeeForm.value;
 
-      this.authService.login(roleId, username, password).subscribe({
+      this.authService.login(roleId, usernameOrEmail, password).subscribe({
         next: (response) => {
           const token = response.token;
           const decodedToken: any = jwt_decode(token);

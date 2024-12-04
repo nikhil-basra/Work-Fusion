@@ -67,6 +67,7 @@
           <p><strong>User ID:</strong> {{ selectedManager.userId }}</p>
           <p><strong>Present Address:</strong> {{ selectedManager.presentAddress }}</p>
           <p><strong>Permanent Address:</strong> {{ selectedManager.permanentAddress }}</p>
+          <p><strong>Date Of Birth</strong> {{ selectedManager.dateOfBirth | date:'yyyy-MM-dd' }}</p>
           <p><strong>ID Type:</strong> {{ selectedManager.idType }}</p>
           <p><strong>ID Number:</strong> {{ selectedManager.idNumber }}</p>
           <p><strong>Status:</strong> {{ selectedManager.isActive ? 'Active' : 'Inactive' }}</p>

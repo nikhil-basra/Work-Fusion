@@ -16,8 +16,6 @@ import { ManagerLoginComponent } from './outer/manager-login/manager-login.compo
 // Import Employee Components
 import { EmployeeLayoutComponent } from './layout/employee-layout/employee-layout.component';
 import { EmployeehomeComponent } from './employee/employeehome/employeehome.component';
-import { EmployeechatComponent } from './employee/employeechat/employeechat.component';
-import { EmployeeprofileComponent } from './employee/employeeprofile/employeeprofile.component';
 import { EmployeeattendanceComponent } from './employee/employeeattendance/employeeattendance.component';
 import { EmployeeprojectsComponent } from './employee/employeeprojects/employeeprojects.component';
 import { EmployeetasksComponent } from './employee/employeetasks/employeetasks.component';
@@ -56,6 +54,18 @@ import { ClientProfileComponent } from './client/profile/client-profile/client-p
 import { ClientProfileUpdateComponent } from './client/profile/client-profile-update/client-profile-update.component';
 import { ClientSettingsComponent } from './client/settings/client-settings/client-settings.component';
 import { ClientResetPasswordComponent } from './client/settings/client-reset-password/client-reset-password.component';
+import { EmployeeprofileComponent } from './employee/profile/employeeprofile/employeeprofile.component';
+import { EmployeeProfileUpdateComponent } from './employee/profile/employee-profile-update/employee-profile-update.component';
+import { EmployeeSettingsComponent } from './employee/settings/employee-settings/employee-settings.component';
+import { EmployeeResetPasswordComponent } from './employee/settings/employee-reset-password/employee-reset-password.component';
+import { ManagerSettingsComponent } from './manager/settings/manager-settings/manager-settings.component';
+import { ManagerResetPasswordComponent } from './manager/settings/manager-reset-password/manager-reset-password.component';
+import { ManagerProfileComponent } from './manager/profile/manager-profile/manager-profile.component';
+import { ManagerProfileUpdateComponent } from './manager/profile/manager-profile-update/manager-profile-update.component';
+import { EmployeeWelcomeComponent } from './employee/chat/employee-welcome/employee-welcome.component';
+import { EmployeeChatComponent } from './employee/chat/employee-chat/employee-chat.component';
+import { EmployeeJoinRoomComponent } from './employee/chat/employee-join-room/employee-join-room.component';
+import { ForgotPasswordComponent } from './outer/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -73,6 +83,7 @@ const routes: Routes = [
       { path: 'employee-login', component: EmployeeLoginComponent },
       { path: 'client-login', component: ClientLoginComponent },
       { path: 'signup-form', component: SignupFormComponent },     // Signup
+      { path: 'forgot-password', component: ForgotPasswordComponent }, 
       { path: '', redirectTo: 'outer-home', pathMatch: 'full' },   // Default redirect to Home
     ]
   },
@@ -83,13 +94,18 @@ const routes: Routes = [
     component: EmployeeLayoutComponent,
     children: [
       { path: 'employeehome', component: EmployeehomeComponent },
-      { path: 'employeechat', component: EmployeechatComponent },
+      { path: 'employee-welcome', component: EmployeeWelcomeComponent },
+      { path: 'employee-chat', component: EmployeeChatComponent },
+      { path: 'employee-join-room', component: EmployeeJoinRoomComponent },
       { path: 'employeeprofile', component: EmployeeprofileComponent },
+      { path: 'employee-profile-update/:id', component: EmployeeProfileUpdateComponent },
       { path: 'employeeattendance', component: EmployeeattendanceComponent },
       { path: 'employeeprojects', component: EmployeeprojectsComponent },
       { path: 'employeetasks', component: EmployeetasksComponent },
       { path: 'employeeleave-requests', component: EmployeeleaverequestsComponent }, // Consistent naming
       { path: 'employeeperformance', component: EmployeeperformanceComponent },
+      { path: 'employee-settings', component: EmployeeSettingsComponent },
+      { path: 'employee-reset-password', component: EmployeeResetPasswordComponent },
       { path: '', redirectTo: 'employeehome', pathMatch: 'full' } // Default route for the employee layout
     ]
   },
@@ -104,6 +120,10 @@ const routes: Routes = [
       { path: 'manager-join-room', component : ManagerJoinRoomComponent},   
       {path : 'manager-chat', component:ManagerChatComponent},
       {path : 'manager-welcome', component:ManagerWelocomeComponent},
+      { path: 'manager-settings', component: ManagerSettingsComponent },
+      { path: 'manager-reset-password', component: ManagerResetPasswordComponent },
+      { path: 'manager-profile', component: ManagerProfileComponent },
+      { path: 'manager-profile-update/:id', component: ManagerProfileUpdateComponent },
       { path: '', redirectTo: 'managerhome', pathMatch: 'full' } 
     ]
   },

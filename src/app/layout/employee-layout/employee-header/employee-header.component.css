@@ -48,8 +48,8 @@
   }
   
   .logo img {
-    width: 80px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 200px; /* Adjust size as needed */
+    height: 70px; /* Maintain aspect ratio */
   }
   
   /* Navigation links */

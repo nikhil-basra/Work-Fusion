@@ -20,7 +20,7 @@ export class ManagerLoginComponent {
     private router: Router
   ) {
     this.managerForm = this.fb.group({
-      username: ['', Validators.required],
+      usernameOrEmail: ['', Validators.required],
       password: ['', Validators.required],
       rememberMe: [false] // Optional remember me functionality
     });
@@ -31,9 +31,9 @@ export class ManagerLoginComponent {
 
     if (this.managerForm.valid) {
       const roleId = 2; // Assuming roleId for Manager is 2
-      const { username, password } = this.managerForm.value;
+      const { usernameOrEmail, password } = this.managerForm.value;
 
-      this.authService.login(roleId, username, password).subscribe({
+      this.authService.login(roleId, usernameOrEmail, password).subscribe({
         next: (response) => {
           const token = response.token; // Assuming response contains a token
 
