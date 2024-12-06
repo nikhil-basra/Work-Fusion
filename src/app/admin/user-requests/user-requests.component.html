@@ -16,41 +16,43 @@
   </div>
 
   <!-- User Table -->
-  <table class="user-table">
-    <thead>
-      <tr>
-        <th>User ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.userId }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td [class.active]="user.isActive" [class.inactive]="!user.isActive">
-          {{ user.isActive ? 'Active' : 'Inactive' }}
-        </td>
-        <td>
-          <button
-            *ngIf="!user.isActive"
-            (click)="toggleUserStatus(user.userId, true)"
-            class="activate-button"
-          >
-            Activate
-          </button>
-          <button
-            *ngIf="user.isActive"
-            (click)="toggleUserStatus(user.userId, false)"
-            class="deactivate-button"
-          >
-            Deactivate
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.userId }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td [class.active]="user.isActive" [class.inactive]="!user.isActive">
+            {{ user.isActive ? 'Active' : 'Inactive' }}
+          </td>
+          <td>
+            <button
+              *ngIf="!user.isActive"
+              (click)="toggleUserStatus(user.userId, true)"
+              class="activate-button"
+            >
+              Activate
+            </button>
+            <button
+              *ngIf="user.isActive"
+              (click)="toggleUserStatus(user.userId, false)"
+              class="deactivate-button"
+            >
+              Deactivate
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -16,7 +16,7 @@ export class ForgotPasswordComponent {
   messageType: string = '';
 
   constructor(
-    private forgotPasswordService: ForgotPasswordService,
+    private forgotPasswordService:ForgotPasswordService,
     private toastr: ToastrService
   ) {}
 

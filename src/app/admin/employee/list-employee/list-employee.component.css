@@ -35,6 +35,22 @@ h2 {
   font-size: 14px;
 }
 
+/* Hide the scrollbar */
+.table-container::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+
+.table-container {
+  -ms-overflow-style: none; /* Hides scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+/* Table container */
+.table-container {
+  max-height: 400px; /* Set max height for the scrollable content */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
 /* Employee table styling */
 .employee-table {
   width: 100%;
@@ -51,9 +67,13 @@ h2 {
   text-align: left;
 }
 
+/* Keep table headers fixed at the top */
 .employee-table th {
   background-color: #007bff;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2; /* Ensure the headers stay on top of the table rows */
 }
 
 .employee-table tbody tr:hover {
@@ -67,6 +87,7 @@ h2 {
   object-fit: cover;
 }
 
+/* Styling buttons */
 button {
   background-color: #007bff;
   color: white;

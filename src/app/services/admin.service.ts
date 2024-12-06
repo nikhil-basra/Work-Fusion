@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ManagerModel } from '../models/manager.model';
 import { ClientModel } from '../models/client.model';
+import { Admin } from '../models/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -139,4 +140,37 @@ deleteClient(clientId: number): Observable<any> {
   return this.http.delete(`${this.apiUrl}/clients/${clientId}`, { headers: this.getAuthHeaders() });
 }
 
+
+//--------------------------admin---------------------------//
+
+   // Fetch all admins
+   getAllAdmins(): Observable<Admin[]> {
+    return this.http.get<Admin[]>(`${this.apiUrl}`, { headers: this.getAuthHeaders() });
+  }
+
+  // Fetch admins by UserId
+  getAdminsByUserId(userId: number): Observable<Admin[]> {
+    return this.http.get<Admin[]>(`${this.apiUrl}/admin/${userId}`, { headers: this.getAuthHeaders() });
+  }
+
+  // Fetch a specific admin by AdminId
+  getAdminById(adminId: number): Observable<Admin> {
+    return this.http.get<Admin>(`${this.apiUrl}/${adminId}`, { headers: this.getAuthHeaders() });
+  }
+
+  // Create a new admin
+  createAdmin(newAdmin: Admin): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}`, newAdmin, { headers: this.getAuthHeaders() });
+  }
+
+  // Update an admin by AdminId
+  updateAdmin(adminId: number, updatedAdmin: Admin): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/${adminId}`, updatedAdmin, { headers: this.getAuthHeaders() });
+  }
+
+  // Soft delete an admin by AdminId
+  deleteAdmin(adminId: number): Observable<string> {
+    return this.http.delete<string>(`${this.apiUrl}/${adminId}`, { headers: this.getAuthHeaders() });
+  }
+  
 }

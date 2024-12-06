@@ -64,11 +64,18 @@ h2 {
 .reset-button:hover {
   background-color: #ec971f;
 }
+/* Table Wrapper (for scrollable content) */
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+}
 
 /* User Table */
 .user-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .user-table th,
@@ -77,13 +84,39 @@ h2 {
   text-align: left;
 }
 
+/* Table Wrapper (for scrollable content) */
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* User Table */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Allow columns to auto-adjust based on content */
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  white-space: nowrap; /* Prevent text wrapping in cells */
+}
+
+/* Table headers styling */
 .user-table th {
   background-color: #4CAF50;
   color: white;
   font-weight: bold;
   border-bottom: 2px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure headers stay above the table body */
 }
 
+/* Table rows */
 .user-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
@@ -92,6 +125,7 @@ h2 {
   border-bottom: 1px solid #ddd;
 }
 
+/* Row Status */
 .user-table td.active {
   color: green;
   font-weight: bold;
@@ -102,6 +136,17 @@ h2 {
   font-weight: bold;
 }
 
+/* Scrollbars */
+.table-wrapper::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+.table-wrapper {
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Buttons */
 .activate-button,
 .deactivate-button {
   padding: 8px 12px;

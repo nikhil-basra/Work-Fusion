@@ -95,6 +95,7 @@ import { EmployeeChatComponent } from './employee/chat/employee-chat/employee-ch
 import { EmployeeWelcomeComponent } from './employee/chat/employee-welcome/employee-welcome.component';
 import { EmployeeJoinRoomComponent } from './employee/chat/employee-join-room/employee-join-room.component';
 import { ForgotPasswordComponent } from './outer/forgot-password/forgot-password.component';
+import { AdminProfileComponent } from './admin/profile/admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -181,6 +182,7 @@ import { ForgotPasswordComponent } from './outer/forgot-password/forgot-password
     EmployeeWelcomeComponent,
     EmployeeJoinRoomComponent,
     ForgotPasswordComponent,
+    AdminProfileComponent,
 
    
   ],

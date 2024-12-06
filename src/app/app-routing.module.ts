@@ -66,6 +66,8 @@ import { EmployeeWelcomeComponent } from './employee/chat/employee-welcome/emplo
 import { EmployeeChatComponent } from './employee/chat/employee-chat/employee-chat.component';
 import { EmployeeJoinRoomComponent } from './employee/chat/employee-join-room/employee-join-room.component';
 import { ForgotPasswordComponent } from './outer/forgot-password/forgot-password.component';
+import { AdminProfileComponent } from './admin/profile/admin-profile/admin-profile.component';
+import { AdminProfileUpdateComponent } from './admin/admin-profile-update/admin-profile-update.component';
 
 
 const routes: Routes = [
@@ -134,6 +136,8 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
       { path: 'home', component: HomeComponent },
+      { path: 'admin-profile', component: AdminProfileComponent },
+      { path: 'admin-profile-update/:id', component: AdminProfileUpdateComponent },
       { path: 'manager/list-manager', component: ListManagerComponent },
       { path: 'manager/add-manager', component: AddManagerComponent },
       { path: 'manager/update-manager/:id', component: UpdateManagerComponent },
